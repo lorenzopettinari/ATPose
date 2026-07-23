@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AT-Pose: Markerless Real-time Piecewise Registration through Anatomical-Temporal Attention</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <!-- FontAwesome & Academicons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+
+  <!-- Fonts and Bulma -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+  <!-- x3dom (for 3D rendering) -->
+  <script src="https://www.x3dom.org/download/x3dom.js"></script>
+  <link rel="stylesheet" href="https://www.x3dom.org/download/x3dom.css">
+
+  <script>
+    document.addEventListener("mousedown", function(e) {
+      if ((e.buttons & 4) === 4 && e.target.matches(".x3dom-canvas")) {
+        e.preventDefault();
+      }
+    });
+  </script>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">AT-Pose: Markerless Real-time Piecewise Registration through Anatomical-Temporal Attention</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://dbe.unibas.ch/en/persons/lorenzo-pettinari/">Lorenzo Pettinari</a><sup>1,2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://dbe.unibas.ch/en/persons/sidaty-el-hadramy/">Sidaty El Hadramy</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://dbe.unibas.ch/en/persons/leo-widmer/">Leo Widmer</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://dbe.unibas.ch/en/persons/philippe-claude-cattin/">Philippe Claude Cattin</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.ukbb.ch/team-ukbb/studer-daniel/">Daniel Studer</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.ukbb.ch/en/personal/personen/Hasler-Carol.php">Carol C. Hasler</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.ukbb.ch/team-ukbb/licci-maria/">Maria Licci</a><sup>2</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Department of Biomedical Engineering, University of Basel, Allschwil, Switzerland,</span>
+              <span class="author-block"><sup>2</sup>Department of Orthopedics, University Children's Hospital Basel, Switzerland</span>
+            </div>
+
+            <!-- Link Buttons Section -->
+            <div class="container has-text-centered mt-4">
+              <div class="buttons is-centered">
+
+                <!-- Arxiv Link  -->
+                <a href="" class="button is-dark is-rounded" target="_blank">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>ArXiv</span>
+                </a>
+
+                <!-- GitHub Button -->
+                <a href="" class="button is-dark is-rounded" target="_blank">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+                <!-- Dataset Link. -->
+
+                <a href="https://rocs.balgrist.ch/en/open-access/spinedepth/" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="far fa-images"></i></span>
+                  <span>Data SpineDepth</span>
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Single Video Section -->
+<section class="section">
+  <div class="container">
+    <h2 class="title is-4 has-text-centered">
+      Real-time registration visualization on unfiltered recordings of ex-vivo human specimens (SpineDepth dataset).
+    </h2>
+    
+    <div class="columns is-centered">
+      <div class="column is-three-quarters has-text-centered">
+        
+        <!-- Video Element -->
+        <video controls autoplay loop muted playsinline style="max-width: 100%; height: auto; border-radius: 8px;">
+          <source src="./videos/video1.mp4" type="video/mp4">
+        </video>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              <strong>Background and objective:</strong>
+              Markerless RGB-D-based registration offers a promising alternative
+              to conventional image-guided spine surgery by avoiding fiducial markers and radiation intensive intraoperative imaging. However, accurate vertebral registration remains challenging due to partial anatomical visibility, occlusions, cross-modal discrepancies between preoperative models and intraoperative observations, and spinal motion. Existing approaches estimate vertebral pose from each frame independently, without exploiting the anatomical and temporal context available across vertebral levels and consecutive frames.
+              <br><br>
+              <strong>Methods:</strong>
+              We propose AT-Pose (Anatomical-Temporal Pose), a markerless framework for piecewise spinal registration from RGB-D video streams. The framework first extracts dense correspondences between the preoperative anatomy and the intraoperative observations, then partitions them into vertebra-specific groups through a novel Post-hoc Correspondence Clustering strategy. To estimate vertebral pose, we introduce a novel Anatomical-Temporal Correspondence Transformer that refines these vertebra-specific correspondences by jointly modeling anatomical relationships across vertebral levels and temporal consistency across consecutive frames.
+              <br><br>
+              <strong>Results:</strong>
+              We evaluated AT-Pose on SpineDepth and our newly introduced extension featuring kinematic-chain-constrained spinal deformations (SpineDepth+). On both datasets, our framework achieves state-of-the-art performance, consistently outperforming existing rigid and piecewise registration methods while maintaining real-time inference. Ablation experiments demonstrate that modeling both anatomical and temporal context contributes to the observed performance gains.
+              <br><br>
+              <strong>Conclusions:</strong>
+              AT-Pose demonstrates that incorporating anatomical and temporal context into correspondence-based registration enables highly accurate markerless vertebral pose estimation under challenging surgical conditions. These findings establish anatomical and temporal context modeling at the correspondence level as a promising direction for markerless image-guided spine surgery.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </section>
+
+<!-- Single Image Section -->
+  <section class="section">
+    <div class="container has-text-centered">
+      <h2 class="title is-4">Overview of the AT-Pose architecture</h2>
+      
+      <!-- Single PNG image -->
+      <img src="./images/Architecture.png" alt="Architecture Overview" style="max-width: 100%; height: auto;" />
+
+      <p class="is-size-5 mt-3">
+        The pipeline processes the intraoperative stream frame-by-frame at each timestep <i>t</i> through three main stages:<br>
+        <strong>(1) Correspondence Estimation:</strong> a pretrained network matches the intraoperative RGB-D data with the preoperative point cloud to generate a raw set of correspondences.<br>
+        <strong>(2) Post-hoc Correspondence Clustering:</strong> splits the raw correspondences set into vertebra-specific subsets using preoperative anatomical labels.<br>
+        <strong>(3) Anatomical-Temporal Correspondence Transformer & Pose Estimation:</strong> the clustered subsets are processed in parallel, leveraging anatomical and temporal attention, then the final individual rigid pose of each vertebra is regressed.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- SpineDepth+ Section -->
+  <section class="section">
+    <div class="container">
+      
+      <h2 class="title is-4 has-text-centered">SpineDepth+</h2>
+      
+      <div class="columns is-vcentered mt-4">
+        
+        <div class="column is-half has-text-centered">
+          <figure class="image">
+            <img src="./images/spinedepth_plus_image.png" alt="SpineDepth+ Image Overview" style="border-radius: 8px;">
+          </figure>
+        </div>
+        
+        <div class="column is-half has-text-centered">
+          <video controls autoplay loop muted playsinline style="max-width: 100%; height: auto; border-radius: 8px;">
+            <source src="./videos/spinedepth_plus_video.mp4" type="video/mp4">
+          </video>
+        </div>
+
+      </div>
+
+      <!-- Caption Placeholder -->
+      <div class="columns is-centered mt-3">
+        <div class="column is-four-fifths">
+          <p class="is-size-5 has-text-centered">
+          SpineDepth preoperative models are synthetically deformed through a kinematic-chain-based model and combined with the original intraoperative RGB-D sequences, introducing preoperative-to-intraoperative anatomical variability for evaluation of markerless vertebral registration. On the right, a visualization of the kinematic chain model in action.          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{
+      }
+      </code></pre>
+    </div>
+  </section>
+
+</body>
+</html>
